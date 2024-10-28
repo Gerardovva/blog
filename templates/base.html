@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Proyecto Django{% endblock %}</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Enlace al blog en la cabecera -->
+        <nav class="navbar navbar-light bg-light">
+            <a href="{% url 'blog:home' %}" class="navbar-brand">Blog Aquí</a>
+        </nav>
+        <hr>
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

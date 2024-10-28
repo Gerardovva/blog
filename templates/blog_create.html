@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Formulario de Ejemplo{% endblock %}
+
+{% block content %}
+<h1>Complete el formulario</h1>
+
+<form method="POST" class="p-4 border rounded bg-light shadow-sm">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        <label for="id_title" class="form-label">Title</label>
+        {{ form.title }}
+    </div>
+    
+    <div class="mb-3">
+        <label for="id_content" class="form-label">Content</label>
+        {{ form.content }}
+    </div>
+    
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% block title %}Blog List{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4">Blog List</h2>
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#details-{{ post.id }}" 
+                            aria-expanded="false" 
+                            aria-controls="details-{{ post.id }}"
+                            style="cursor: pointer;">
+                            {{ post.title }}
+                        </h5>
+                        <p class="card-text">{{ post.content|truncatewords:20 }}</p> <!-- Muestra solo un resumen del contenido -->
+                        <div class="collapse" id="details-{{ post.id }}">
+                            <p class="card-text">{{ post.content }}</p> <!-- Detalle completo -->
+                        </div>
+                        <a href="{% url 'blog:detail' post.id %}" class="btn btn-primary btn-sm">View</a>
+                        <a href="{% url 'blog:update' post.id %}" class="btn btn-warning btn-sm">Update</a>
+                        <a href="{% url 'blog:delete' post.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-muted">No posts available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'blog:create' %}" class="btn btn-success">Create New Post</a>
+    </div>
+</div>
+
+
+<style>
+    .card {
+        height: 100%; 
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}  <!-- Asegúrate de que estás extendiendo la plantilla base correctamente -->
+
+{% block title %}Detalle del Blog{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="display-4">{{ post.title }}</h1>  <!-- Muestra el título del post -->
+    <hr>
+    <p class="lead">{{ post.content }}</p>  <!-- Muestra el contenido del post -->
+    <a href="{% url 'blog:update' post.id %}" class="btn btn-warning">Actualizar</a>
+    <a href="{% url 'blog:delete' post.id %}" class="btn btn-danger">Eliminar</a>
+    <a href="{% url 'blog:home' %}" class="btn btn-secondary">Volver a la lista</a>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Post{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-danger">Confirm Deletion</h1>
+    <p>Are you sure you want to delete the post titled: <strong>{{ form.instance.title }}</strong>?</p>
+
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+        
+        {{ form.as_p }}  <!-- Display form fields nicely with paragraph tags -->
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'blog:home' %}" class="btn btn-secondary">Cancel</a>  <!-- Link to cancel the action -->
+    </form>
+</div>
+{% endblock %}

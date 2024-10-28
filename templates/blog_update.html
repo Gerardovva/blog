@@ -1,0 +1,23 @@
+{% extends "index.html" %}  <!-- Esta línea debe ser la primera en el archivo -->
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<form method="POST" class="container my-5 p-4 border rounded shadow-sm bg-light">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        {{ form.title.label_tag }} <!-- Etiqueta del campo -->
+        <input type="text" name="title" class="form-control" value="{{ form.title.value|default:'' }}"> <!-- Campo de entrada -->
+    </div>
+    
+    <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        {{ form.content.label_tag }} <!-- Etiqueta del campo -->
+        <textarea name="content" class="form-control">{{ form.content.value|default:'' }}</textarea> <!-- Campo de texto -->
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock %}
